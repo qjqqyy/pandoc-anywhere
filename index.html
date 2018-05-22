@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Markdown Scratchpad</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700">
+  <link rel="stylesheet" href="/scratch.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+</head>
+<body>
+<header>
+  <h1 class="title">Markdown Scratchpad</h1>
+  <noscript><meta http-equiv="refresh" content="0; URL=/nojs.pl"></noscript>
+</header>
+<div class="row">
+<div class="col left">
+  <textarea name="md" id="markdown_textarea" placeholder="% Title (optional)
+% Author (optional)
+
+\newcommand{\R}{\mathbb{R}}
+
+..."></textarea>
+</div><!-- /.left -->
+<div class="col right" id="pandoc_output">
+</div><!-- /#right -->
+</div><!-- /#columns -->
+<footer>
+  <p>
+    Math rendering by <a href="https://www.mathjax.org/" target="_blank">MathJax</a>,
+    markdown rendering by <a href="https://pandoc.org" target="_blank">Pandoc</a>,
+    page layout is blatantly inspired by <a href="http://mathb.in" target="_blank">mathb.in</a>.
+  </p>
+  <p>&copy; 2018 Qi Ji. This is free software, you're free to redistribute or whatever under the terms of the
+  <a href="LICENSE.txt" target="_blank">ISC License</a>.</p>
+</footer>
+</body>
+<script src="/refresh.js"></script>
+</html>
+<!-- vim: set sw=2 et: -->
