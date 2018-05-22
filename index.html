@@ -4,11 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Markdown Scratchpad</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700">
-  <link rel="stylesheet" href="/scratch.css">
+  <link rel="stylesheet" href="scratch.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <noscript><meta http-equiv="refresh" content="0; URL=/nojs.pl"></noscript>
 </head>
-<body>
+<body><div id="bigwrap">
 <header>
   <h1 class="title">Markdown Scratchpad</h1>
 </header>
@@ -22,8 +22,8 @@
 ..."></textarea>
 </div><!-- /.left -->
 <div class="col right" id="pandoc_output">
-</div><!-- /#right -->
-</div><!-- /#columns -->
+</div><!-- /.right -->
+</div><!-- /.row -->
 <footer>
   <p>
     <a href="https://github.com/qjqqyy/pandoc-anywhere">Source code</a>.
@@ -34,7 +34,7 @@
   <p>&copy; 2018 Qi Ji. This is free software, you're free to redistribute or whatever under the terms of the
   <a href="LICENSE.txt" target="_blank">ISC License</a>.</p>
 </footer>
-</body>
-<script src="/refresh.js"></script>
+</div><!-- /.bigwrap --> </body>
+<script src="refresh.js"></script>
 </html>
 <!-- vim: set sw=2 et: -->

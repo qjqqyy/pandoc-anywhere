@@ -16,19 +16,7 @@ function debounce(func, wait, immediate) {
     };
 };
 
-var updateHeight = debounce(function() {
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight+2) + 'px';
-}, 100);
-
 var tx = document.getElementById('markdown_textarea');
-tx.addEventListener("input", updateHeight);
-tx.addEventListener("cut", updateHeight);
-tx.addEventListener("paste", updateHeight);
-window.addEventListener("resize", function () {
-    updateHeight.call(document.getElementById('markdown_textarea'));
-});
-updateHeight.call(document.getElementById('markdown_textarea'));
 
 var refresh_right = debounce(function() {
     var xhr = new XMLHttpRequest();

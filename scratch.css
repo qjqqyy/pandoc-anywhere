@@ -31,9 +31,9 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 }
 
 /* tweaked pandoc.css */
-* {
+/* {
 	box-sizing: border-box;
-}
+} */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
 	display: block;
 }
@@ -51,18 +51,13 @@ html {
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
-	background-color: #eee8d5;
 	color: #657b83;
-	margin: 1em;
 }
 body {
 	font-family: 'PT Sans', sans-serif;
 	font-size: 12px;
+	/* background-color: #eee8d5; */
 	background-color: #fdf6e3;
-	margin: 0 auto;
-	border: 1pt solid #93a1a1;
-	padding: 1em;
-	min-height: 95vh;
 }
 @media only screen and (min-width: 480px) {
 	body {
@@ -168,8 +163,18 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 textarea {
+	background-color: #eee8d5;
+	color: #657b83;
+	padding: 0.5em;
+	font-family: 'Inconsolata', monospace;
+	line-height: 1.15;
+}
+textarea {
 	overflow: auto;
 	vertical-align: top;
+}
+textarea::placeholder {
+	color: #93a1a1;
 }
 /* anchors */
 a {
@@ -352,39 +357,48 @@ code span.in { color: #93A1A1; font-weight: normal; font-style: italic; } /* Inf
  * tons of random fixes
  */
 
-textarea {
-	background-color: #eee8d5;
-	color: #657b83;
+html, body {
+	margin:0; padding:0;
+}
+body { min-width: 1000px }
+html, body, div#bigwrap, .row, .col, textarea {
+	box-sizing: border-box;
+}
+textarea#markdown_textarea{
 	width: 100%;
-	padding: 0.3em;
-	font-family: 'Inconsolata', monospace;
-	line-height: 1.15;
-	min-height: 98%;
-	resize: vertical;
-}
-textarea::placeholder {
-	color: #93a1a1;
-}
-.row {
-	display: flex;
-	min-height: 80vh;
+	height: 100%;
 }
 .col {
 	padding: .5em;
 	border: 1pt solid #93a1a1;
 }
-.left {
-	flex-basis: 45%;
-	flex-shrink: 0;
+/*
+ * header above .row above footer, with .row filling up space
+ */
+div#bigwrap {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
 }
-.right {
-	//min-height: 24em;
-	flex-basis: 55%;
-	min-width: 50%;
+div.row {
 	flex-grow: 1;
 }
-@media only screen and (max-width: 1000px) {
-	.row {
-		flex-direction: column;
-	}
+header { flex-grow: 0; }
+footer { flex-grow: 0; }
+
+/*
+ * .left | .right half-half split
+ */
+div.row {
+	display: flex;
+}
+div.col {
+	flex: 1;
+}
+div.left {
+	align-items: stretch;
+}
+div.right {
+	overflow-y: auto;
 }
