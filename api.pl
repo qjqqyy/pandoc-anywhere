@@ -25,7 +25,7 @@ if ($r->method() ne 'POST') {
 
 my %webmath = (
     mathjax => '--mathjax',
-    webtex => '--webtex',
+    webtex => '--webtex=https://latex.codecogs.com/svg.latex?',
 );
 # default values
 my ($standalone, $mathlib, $numbersections) = (0, 'mathjax', 0);

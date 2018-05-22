@@ -17,17 +17,21 @@ binmode STDOUT, ":utf8";
 my $r = shift;
 my $q = new CGI;
 
-# build @PANDOC_ARGS
-my @PANDOC_ARGS = ('--quiet', '--from', 'markdown+emoji', '--webtex=https://latex.codecogs.com/svg.latex?');
-my $numbersections = 0;
+# "argument parsing"
+my($force_mathjax, $numbersections);
 $numbersections = !!(scalar $q->param('numbersections')) if defined $q->param('numbersections');
+$force_mathjax = !!(scalar $q->param('force_mathjax')) if defined $q->param('force_mathjax');
+
+# build @PANDOC_ARGS
+my @PANDOC_ARGS = ('--quiet', '--from', 'markdown+emoji'); 
+push @PANDOC_ARGS, $force_mathjax ?'--mathjax' : '--webtex=https://latex.codecogs.com/svg.latex?';
 push @PANDOC_ARGS, '--number-sections' if $numbersections;
 
 ### OUTPUT STARTS HERE ###
 print "Content-type: text/html; charset=utf-8\n\n";
 
 # I'm gonna piss off so many people with this lazy shit
-print << 'END_FIRST_THIRD';
+print << 'END_PRE_MATHJAX';
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +39,9 @@ print << 'END_FIRST_THIRD';
   <title>Markdown Scratchpad (no JS)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700">
   <link rel="stylesheet" href="scratch.css">
+END_PRE_MATHJAX
+print '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>',"\n" if $force_mathjax;
+print << 'END_FIRST_THIRD';
   <style>
 form { height: 100%;}
 textarea#markdown_textarea { height: calc(100% - 3em); margin-bottom: .3em;}
@@ -47,7 +54,7 @@ textarea#markdown_textarea { height: calc(100% - 3em); margin-bottom: .3em;}
 </header>
 <div class="row">
 <div class="col left">
-  <form action="nojs.pl" method="post">
+  <form method="post">
   <textarea name="md" id="markdown_textarea" placeholder="% Title (optional)
 % Author (optional)
 
@@ -60,9 +67,11 @@ print scalar $q->param('md') if defined $q->param('md');
 print '</textarea>';
 print q(<input type="checkbox" name="numbersections" id="box_numbersections" value="1");
 print q( checked="true" ) if $numbersections;   # god i hate this
-print q(>);
+print q(><label for="box_numbersections"> Number Sections </label>);
+print q(<input type="checkbox" name="force_mathjax" id="box_force_mathjax" value="1");
+print q( checked="true" ) if $force_mathjax;   # god i hate this
+print q(><label for="box_force_mathjax"> Force MathJax (JS) </label>);
 print << 'END_2ND_THIRD';
-  <label for="box_numbersections">Number Sections</label>
   <input type="submit" value="Preview">
   </form>
 </div><!-- /.left -->
@@ -92,13 +101,17 @@ if (defined $q->param('md')){
     #print <$p_err>;
 }
 
-print << 'IM_DONE';
+print << 'IM_ALMOST_DONE';
 </div><!-- /.right -->
 </div><!-- /.row -->
 <footer>
   <p>
     <a href="https://github.com/qjqqyy/pandoc-anywhere">Source code</a>.
-    Math rendering by <a href="https://latex.codecogs.com" target="_blank">WebTex</a>,
+    Math rendering by 
+IM_ALMOST_DONE
+if ($force_mathjax) { print '<a href="https://www.mathjax.org/" target="_blank">MathJax</a>,'; }
+else { print '<a href="https://latex.codecogs.com" target="_blank">WebTex</a>,'; }
+print << 'IM_DONE';
     markdown rendering by <a href="https://pandoc.org" target="_blank">Pandoc</a>,
     page layout is blatantly inspired by <a href="http://mathb.in" target="_blank">mathb.in</a>.
   </p>
