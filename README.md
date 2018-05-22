@@ -19,8 +19,8 @@ curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary
 
 `api.pl` accepts the following parameters via query string,
 
-* `standalone` -- generates a standalone HTML if specified, snippet otherwise.
-* `webmath` -- either `mathjax`(default) or `webtex`.
+* `standalone` – generates a standalone HTML if specified, snippet otherwise.
+* `webmath` – either `mathjax`(default) or `webtex`.
 
 
 Markdown Scratchpad
