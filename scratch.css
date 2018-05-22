@@ -360,6 +360,7 @@ textarea {
 	font-family: 'Inconsolata', monospace;
 	line-height: 1.15;
 	min-height: 98%;
+	resize: vertical;
 }
 textarea::placeholder {
 	color: #93a1a1;

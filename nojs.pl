@@ -35,7 +35,7 @@ print << 'END_FIRST_THIRD';
   <link rel="stylesheet" href="/scratch.css">
 <style>
 .row { min-height: 75vh; }
-textarea { margin-bottom: 1em; }
+textarea { margin-bottom: 1em; min-height: 0;}
 </style>
 </head>
 <body>
@@ -91,6 +91,7 @@ print << 'IM_DONE';
 </div><!-- /#columns -->
 <footer>
   <p>
+    <a href="https://github.com/qjqqyy/pandoc-anywhere">Source code</a>.
     Math rendering by <a href="https://latex.codecogs.com" target="_blank">WebTex</a>,
     markdown rendering by <a href="https://pandoc.org" target="_blank">Pandoc</a>,
     page layout is blatantly inspired by <a href="http://mathb.in" target="_blank">mathb.in</a>.

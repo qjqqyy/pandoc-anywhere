@@ -26,7 +26,7 @@ curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary
 Markdown Scratchpad
 -------------------
 
-Basic markdown editor that uses API to auto-update, try it at <https://scratch.b0ss.net>.
+Basic markdown editor that uses API to auto-update, [try it](https://scratch.b0ss.net).
 There's also a less functional [no JS version](https://scratch.b0ss.net/nojs.pl) which defaults to `webtex`.
 
 
