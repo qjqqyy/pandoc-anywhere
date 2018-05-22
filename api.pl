@@ -28,13 +28,16 @@ my %webmath = (
     webtex => '--webtex',
 );
 # default values
-my ($standalone, $mathlib) = (0, 'mathjax');
+my ($standalone, $mathlib, $numbersections) = (0, 'mathjax', 0);
 # parse query string
 for my $kv (split '&', $r->args) {
     $kv =~ /([^=]*)(?:=(.*))?/;
     given ($1) {
         when ('standalone') {
             $standalone = 1;
+        }
+        when ('numbersections') {
+            $numbersections = 1;
         }
         when ('webmath') {
             if (exists $webmath{$2}) {
@@ -46,6 +49,7 @@ for my $kv (split '&', $r->args) {
 
 # build @PANDOC_ARGS
 my @PANDOC_ARGS = ('--quiet', '--from', 'markdown+emoji');
+push @PANDOC_ARGS, '--number-sections' if $numbersections;
 push @PANDOC_ARGS, '--standalone',
     '--css=https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700',
     '--css=https://b0ss.net/pandoc.css' if $standalone;

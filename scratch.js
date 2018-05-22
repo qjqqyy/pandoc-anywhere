@@ -17,10 +17,12 @@ function debounce(func, wait, immediate) {
 };
 
 var tx = document.getElementById('markdown_textarea');
+var numsec = document.getElementById('cb_numbersections');
 
 var refresh_right = debounce(function() {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", '/api.pl', true);
+
+    xhr.open("POST", '/api.pl' + (numsec.checked ? '?numbersections' : '' ), true);
     xhr.setRequestHeader("Content-type", "text/plain; charset=utf-8");
     // TODO: loading animations???
     xhr.onreadystatechange = function() {
@@ -38,4 +40,6 @@ var refresh_right = debounce(function() {
 tx.addEventListener("input", refresh_right);
 tx.addEventListener("cut", refresh_right);
 tx.addEventListener("paste", refresh_right);
+/* refresh when checkbox toggled too */
+numsec.addEventListener("click", refresh_right);
 // vim: et sw=4

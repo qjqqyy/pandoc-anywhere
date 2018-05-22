@@ -402,3 +402,13 @@ div.left {
 div.right {
 	overflow-y: auto;
 }
+
+/* floating settings, TODO: hideable */
+div#floating_thing {
+	position: absolute;
+	/* just gonna check it in a corner (quite literally) */
+	bottom:0; right:0;
+	margin:1em; padding:1em;
+	background-color: #eee8d5;
+	border: 1pt solid #93a1a1
+}
