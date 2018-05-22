@@ -3,10 +3,9 @@ pandoc-anywhere
 
 `pandoc-anywhere` exposes your local `pandoc` installation over the web so you can do useful (or in my case, stupid) things with it.
 
-<aside class="warning">
+__Warning.__
 If you do run this software, you are exposing your `pandoc` installation to
 whoever who can access your web server, making any local vulnerabilities remote!
-</aside>
 
 
 API
