@@ -10,7 +10,7 @@ use constant PANDOC_PATH => '/home/chiya/.cabal/bin/pandoc';
 
 use Apache2::SubProcess ();
 use CGI '-utf8';
-use CGI::Carp 'fatalsToBrowser';
+use CGI::Carp;
 $CGI::POST_MAX=32*1024;
 
 binmode STDOUT, ":utf8";
