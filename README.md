@@ -30,7 +30,7 @@ curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary
 <dd>either <code>mathjax</code>(default) or <code>webtex</code>.
 </dd>
 </dl>
-<!--- generated from
+<!-- generated from
 `numbersections`
 :   number sections if specified
 
