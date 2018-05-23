@@ -39,7 +39,7 @@ curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary
 
 `webmath`
 :   either `mathjax`(default) or `webtex`.
--->
+--->
 
 
 Markdown Scratchpad
