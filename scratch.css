@@ -56,8 +56,6 @@ html {
 body {
 	font-family: 'PT Sans', sans-serif;
 	font-size: 12px;
-	line-height: 1.5;
-	/* background-color: #eee8d5; */
 	background-color: #fdf6e3;
 }
 @media only screen and (min-width: 480px) {
@@ -164,8 +162,8 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 textarea {
-	background-color: #eee8d5;
-	color: #657b83;
+	background-color: inherit;
+	color: inherit;
 	padding: 0.5em;
 	font-family: 'Inconsolata', monospace;
 	line-height: 1.15;
@@ -380,13 +378,17 @@ div#bigwrap {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	padding: 1em;
 }
 div.row {
 	flex-grow: 1;
 }
-header { flex-grow: 0; }
-footer { flex-grow: 0; }
+header, footer {
+	flex-grow: 0;
+}
+
+header, footer, div.row {
+	padding: 0 1em;
+}
 
 /*
  * .left | .right half-half split
@@ -403,13 +405,14 @@ div.left {
 }
 div.right {
 	overflow-y: auto;
+	padding-bottom: 10em; /* overscroll */
 }
 
 /* floating settings, TODO: hideable */
 div#floating_thing {
 	position: absolute;
 	/* just gonna check it in a corner (quite literally) */
-	bottom:0; right:0;
+	top:0; right:0;
 	margin:1em; padding:1em;
 	background-color: #eee8d5;
 	border: 1pt solid #93a1a1

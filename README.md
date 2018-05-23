@@ -19,8 +19,23 @@ curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary
 
 `api.pl` accepts the following parameters via query string,
 
-* `standalone` – generates a standalone HTML if specified, snippet otherwise.
-* `webmath` – either `mathjax`(default) or `webtex`.
+<dl>
+<dt><code>numbersections</code></dt>
+<dd>number sections if specified <code>standalone</code>
+</dd>
+<dd>generates a standalone HTML if specified, snippet otherwise. <code>webmath</code>
+</dd>
+<dd>either <code>mathjax</code>(default) or <code>webtex</code>.
+</dd>
+</dl>
+<!--- generated from
+`numbersections`
+:   number sections if specified
+`standalone`
+:   generates a standalone HTML if specified, snippet otherwise.
+`webmath`
+:   either `mathjax`(default) or `webtex`.
+-->
 
 
 Markdown Scratchpad
