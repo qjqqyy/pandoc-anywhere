@@ -85,7 +85,6 @@ if (defined $q->param('md')){
     print qq(<p class="author">$1</p>\n)  if $markdown[1] =~ /^%(.*)$/;
     my($p_in, $p_out, $p_err) = $r->spawn_proc_prog(PANDOC_PATH, \@PANDOC_ARGS);
     # why can't UTF-8 just be default everywhere?
-    use Encode qw(encode_utf8 decode_utf8);
     binmode $p_in, ":utf8";
     binmode $p_out, ":utf8";
     binmode $p_err, ":utf8";
