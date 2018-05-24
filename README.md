@@ -30,16 +30,6 @@ curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary
 <dd>either <code>mathjax</code>(default) or <code>webtex</code>.
 </dd>
 </dl>
-<!-- generated from
-`numbersections`
-:   number sections if specified
-
-`standalone`
-:   generates a standalone HTML if specified, snippet otherwise.
-
-`webmath`
-:   either `mathjax`(default) or `webtex`.
--->
 
 
 Markdown Scratchpad
