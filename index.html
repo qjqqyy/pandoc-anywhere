@@ -4,22 +4,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Markdown Scratchpad</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700">
-  <link rel="stylesheet" href="scratch.css">
+  <!-- codemirror includes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/codemirror.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/codemirror.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/dialog/dialog.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/theme/solarized.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/keymap/vim.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/edit/matchbrackets.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/edit/closebrackets.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/dialog/dialog.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/mode/overlay.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/mode/multiplex.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/search/searchcursor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/addon/selection/active-line.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/mode/gfm/gfm.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/mode/yaml/yaml.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.38.0/mode/meta.js"></script>
+  <!-- local mode overrides -->
+  <script src="mode/markdown.js"></script>
+  <script src="mode/pandoc.js"></script>
+  <script src="mode/gfm-math.js"></script>
+  <script src="mode/tex-mathmode.js"></script>
+  <!-- / codemirror includes -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
-  <noscript><meta http-equiv="refresh" content="0; URL=nojs.pl"></noscript>
+  <link rel="stylesheet" href="scratch.css">
 </head>
 <body><div id="bigwrap">
 <header>
   <h1 class="title">Markdown Scratchpad</h1>
 </header>
-<div class="row">
-<div class="col left">
-  <textarea name="md" id="markdown_textarea" placeholder="% Title (optional)
-% Author (optional)
-
-\newcommand{\R}{\mathbb{R}}
-
-..."></textarea>
+<div class="row" id="smallwrap">
+<div class="col left" id="editor">
+  <div id="command-display-container"><span id="command-display"></span></div>
 </div><!-- /.left -->
 <div class="col right" id="pandoc_output">
 </div><!-- /.right -->
@@ -27,20 +43,20 @@
 <footer>
   <p>
     <a href="https://github.com/qjqqyy/pandoc-anywhere">Source code</a>.
-    Math rendering by <a href="https://www.mathjax.org/" target="_blank">MathJax</a>,
-    markdown rendering by <a href="https://pandoc.org" target="_blank">Pandoc</a>,
-    page layout is blatantly inspired by <a href="http://mathb.in" target="_blank">mathb.in</a>.
-  </p>
-  <p>&copy; 2018 Qi Ji. This is free software, you're free to redistribute or whatever under the terms of the
-  <a href="LICENSE.txt" target="_blank">ISC License</a>.</p>
+    | Powered by <a href="https://www.mathjax.org/" target="_blank">MathJax</a>,
+    <a href="https://pandoc.org" target="_blank">Pandoc</a>, and
+    <a href="https://codemirror.net/" target="_blank">CodeMirror</a>.
+    | &copy; 2018 Qi Ji. This is free software licensed under the <a href="LICENSE.txt" target="_blank">ISC License</a>.</p>
 </footer>
 </div><!-- /.bigwrap --> </body>
-<div id="floating_thing">
-  <section id="settings_hideable">
+<div id="floating-thing">
+  <section>
+    <a href="javascript:toggle_orientation()">Toggle Orientation</a> | 
     <input type="checkbox" id="cb_numbersections" name="numbersections" value="1">
     <label for="cb_numbersections">Number Sections</label>
   </section>
 </div>
 <script src="scratch.js"></script>
+<script src="cm.js"></script>
 </html>
 <!-- vim: set sw=2 et: -->

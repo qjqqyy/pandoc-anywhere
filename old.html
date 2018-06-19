@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Markdown Scratchpad</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700">
+  <link rel="stylesheet" href="scratch.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <noscript><meta http-equiv="refresh" content="0; URL=nojs.pl"></noscript>
+</head>
+<body><div id="bigwrap">
+<header>
+  <h1 class="title">Markdown Scratchpad</h1>
+</header>
+<div class="row" id="smallwrap">
+<div class="col left">
+  <textarea name="md" id="markdown_textarea" style="width:100%;height:100%;" placeholder="% Title (optional)
+% Author (optional)
+
+\newcommand{\R}{\mathbb{R}}
+
+..."></textarea>
+</div><!-- /.left -->
+<div class="col right" id="pandoc_output">
+</div><!-- /.right -->
+</div><!-- /.row -->
+<footer>
+  <p>
+    <a href="https://github.com/qjqqyy/pandoc-anywhere">Source code</a>.
+    Math rendering by <a href="https://www.mathjax.org/" target="_blank">MathJax</a>,
+    markdown rendering by <a href="https://pandoc.org" target="_blank">Pandoc</a>,
+    page layout is blatantly inspired by <a href="http://mathb.in" target="_blank">mathb.in</a>.
+  </p>
+  <p>&copy; 2018 Qi Ji. This is free software, you're free to redistribute or whatever under the terms of the
+  <a href="LICENSE.txt" target="_blank">ISC License</a>.</p>
+</footer>
+</div><!-- /.bigwrap --> </body>
+<div id="floating-thing">
+  <section>
+    <a href="javascript:toggle_orientation()">Toggle Orientation</a> | 
+    <input type="checkbox" id="cb_numbersections" name="numbersections" value="1">
+    <label for="cb_numbersections">Number Sections</label>
+  </section>
+</div>
+<script src="scratch.js"></script>
+<script>
+var tx = document.getElementById('markdown_textarea');
+var numsec = document.getElementById('cb_numbersections');
+
+tx.addEventListener("input", refresh_right);
+tx.addEventListener("cut", refresh_right);
+tx.addEventListener("paste", refresh_right);
+/* refresh when checkbox toggled too */
+numsec.addEventListener("click", refresh_right);
+/* very ugly shim because over there they also call editor.getValue() */
+var editor = {
+  getValue: function() {
+    return tx.value;
+  }
+}
+</script>
+</html>
+<!-- vim: set sw=2 et: -->
