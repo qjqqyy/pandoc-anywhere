@@ -105,7 +105,7 @@ print << 'IM_ALMOST_DONE';
 </div><!-- /.row -->
 <footer>
   <p>
-    <a href="https://github.com/qjqqyy/pandoc-anywhere">Source code</a>.
+    <a href="https://github.com/qjqqyy/scratch">Source code</a>.
     Math rendering by 
 IM_ALMOST_DONE
 if ($force_mathjax) { print '<a href="https://www.mathjax.org/" target="_blank">MathJax</a>,'; }

@@ -1,7 +1,8 @@
-pandoc-anywhere
-===============
+scratch
+=======
 
-`pandoc-anywhere` exposes your local `pandoc` installation over the web so you can do useful (or in my case, stupid) things with it.
+It's a markdown scratchpad. Your local `pandoc` installation gets exported over
+the web so you can do useful (or in my case, stupid) things with it.
 
 __Warning.__
 If you do run this software, you are exposing your `pandoc` installation to
@@ -14,7 +15,7 @@ API
 Usage example:
 
 ```sh
-curl --compressed http://host/api.pl -H 'Content-Type: text/plain' --data-binary @file.md
+curl --compressed https://scratch.b0ss.net/api.pl -H 'Content-Type: text/plain' --data-binary @file.md
 ```
 
 `api.pl` accepts the following parameters via query string,
