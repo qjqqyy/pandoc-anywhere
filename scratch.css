@@ -63,7 +63,7 @@ body {
 		font-size: 14px;
 	}
 }
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1000px) {
 	body {
 		font-size: 16px;
 	}
@@ -360,12 +360,8 @@ html, body {
 	margin:0; padding:0;
 }
 body { min-width: 1000px }
-html, body, div#bigwrap, .row, .col, textarea {
+html, body, div#bigwrap, .row, .col, textarea, #editor {
 	box-sizing: border-box;
-}
-textarea#markdown_textarea{
-	width: 100%;
-	height: 100%;
 }
 .col {
 	padding: .5em;
@@ -393,23 +389,25 @@ header, footer, div.row {
 /*
  * .left | .right half-half split
  */
-div.row {
+div#smallwrap {
 	display: flex;
 	min-height: 0; /* firefox wants this */
+	flex-direction: row; 	/* this gets toggled */
 }
 div.col {
 	flex: 1;
 }
 div.left {
 	align-items: stretch;
+	max-width: 50%;
 }
 div.right {
 	overflow-y: auto;
-	padding-bottom: 10em; /* overscroll */
+	padding-bottom: 50vh; /* overscroll */
 }
 
 /* floating settings, TODO: hideable */
-div#floating_thing {
+div#floating-thing {
 	position: absolute;
 	/* just gonna check it in a corner (quite literally) */
 	top:0; right:0;
@@ -417,3 +415,31 @@ div#floating_thing {
 	background-color: #eee8d5;
 	border: 1pt solid #93a1a1
 }
+
+.CodeMirror {
+	height: 100%; /* fill up vertical space */
+	font-size: 14px;
+	font-family: "Menlo", "Inconsolata", monospace;
+}
+
+/* command display */
+div.left { position: relative; }
+div#command-display-container {
+	position: absolute;
+	bottom: .5em;
+	right: .5em;
+	min-width: 5em;
+	padding: .1em;
+	z-index: 14; /* want this below the dialog */
+	font-family: "Menlo", "Inconsolata", monospace;
+}
+
+/* override solarized colorscheme because fuck italic comments */
+.cm-s-solarized .cm-comment {
+	color: #93a1a1;
+	font-style: unset;
+}
+
+.cm-delim { color: #b58900; }
+
+.cm-math { color: #268bd2; }

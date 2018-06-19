@@ -1,11 +1,11 @@
 #!/usr/bin/env perl
-# perl CGI is so 2000s, but I already have Apache so...
+# I have no mood to fix this ad-hoc mess
 
 use strict;
 use warnings;
 use feature 'switch';
 no warnings qw(uninitialized experimental);
-use constant PANDOC_PATH => '/home/chiya/.cabal/bin/pandoc';
+use constant PANDOC_PATH => '/home/chiya/bin/pandoc';
 
 use Apache2::SubProcess ();
 use CGI '-utf8';
@@ -44,7 +44,7 @@ print '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax
 print << 'END_FIRST_THIRD';
   <style>
 form { height: 100%;}
-textarea#markdown_textarea { height: calc(100% - 3em); margin-bottom: .3em;}
+textarea#markdown_textarea { width: 100%; height: calc(100% - 3em); margin-bottom: .3em;}
   </style>
 </head>
 <body><div id="bigwrap">
@@ -52,7 +52,7 @@ textarea#markdown_textarea { height: calc(100% - 3em); margin-bottom: .3em;}
   <h1 class="title">Markdown Scratchpad (no JS)</h1>
   <p><a href="./">JS-enabled version</a>.</p>
 </header>
-<div class="row">
+<div class="row" id="smallwrap">
 <div class="col left">
   <form method="post">
   <textarea name="md" id="markdown_textarea" placeholder="% Title (optional)

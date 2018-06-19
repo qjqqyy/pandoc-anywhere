@@ -6,7 +6,7 @@ use warnings;
 use feature 'switch';
 no warnings qw(uninitialized experimental);
 use utf8;
-use constant PANDOC_PATH => '/home/chiya/.cabal/bin/pandoc';
+use constant PANDOC_PATH => '/home/chiya/bin/pandoc';
 
 use Apache2::SubProcess ();
 use CGI '-utf8';
@@ -48,7 +48,7 @@ for my $kv (split '&', $r->args) {
 }
 
 # build @PANDOC_ARGS
-my @PANDOC_ARGS = ('--quiet', '--from', 'markdown+emoji');
+my @PANDOC_ARGS = ('--quiet', '--from', 'markdown+emoji+tex_math_single_backslash');
 push @PANDOC_ARGS, '--number-sections' if $numbersections;
 push @PANDOC_ARGS, '--standalone',
     '--css=https://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700',

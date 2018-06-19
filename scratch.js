@@ -16,9 +16,9 @@ function debounce(func, wait, immediate) {
     };
 };
 
-var tx = document.getElementById('markdown_textarea');
 var numsec = document.getElementById('cb_numbersections');
 
+/* XXX: consider switching to standalone with an iframe */
 var refresh_right = debounce(function() {
     var xhr = new XMLHttpRequest();
 
@@ -34,12 +34,15 @@ var refresh_right = debounce(function() {
             MathJax.Hub.Queue(["Typeset", MathJax.Hub, right]);
         }
     }
-    xhr.send(tx.value);
+    xhr.send(editor.getValue());
 }, 1000);       // <-- debounce timeout
 
-tx.addEventListener("input", refresh_right);
-tx.addEventListener("cut", refresh_right);
-tx.addEventListener("paste", refresh_right);
 /* refresh when checkbox toggled too */
 numsec.addEventListener("click", refresh_right);
-// vim: et sw=4
+
+/* add a toggle for orientation */
+var smallwrap = document.getElementById('smallwrap');
+smallwrap.style.flexDirection = 'row-reverse';  /* I always change this so... */
+function toggle_orientation() {
+    smallwrap.style.flexDirection = smallwrap.style.flexDirection == 'row' ?  'row-reverse' : 'row';
+}
